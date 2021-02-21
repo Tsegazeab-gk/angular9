@@ -4,8 +4,8 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class AuthService {
-    constructor(private datasource: RestDataSource) { 
-    }
+    constructor(private datasource: RestDataSource) {}
+    
     authenticate(username:string, password: string) : Observable<boolean> {
         return this.datasource.authenticate(username,password);
     }

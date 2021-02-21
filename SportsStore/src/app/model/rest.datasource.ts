@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { Product } from "./product.model";
-import {Order } from "./order.model";
-import {Observable } from "rxjs";
-import {map} from "rxjs/operators";
- 
+import { Cart } from "./cart.model";
+import { Order } from "./order.model";
+import { map } from "rxjs/operators";
+import { HttpHeaders } from '@angular/common/http';
 
 const PROTOCOL="http";
 const PORT=3500;
@@ -58,14 +59,23 @@ return this.http.post<any>(this.baseUrl+"login",{
     deleteOrder(id:number) : Observable<Order>{
         return this.http.delete<Order>(`${this.baseUrl}orders/${id}`, this.getOptions());
     }
-    updateOrder(order): Observable<Order>{
+    updateOrder(order: Order): Observable<Order>{
         return this.http.put<Order>(`${this.baseUrl}orders/${order.id}`,order, this.getOptions());
     }
-
+/*
     private getOptions(){
         return {
             headers:new HttpHeaders({
                 "Authorization":`Bearer<${this.auth_token}`
+            })
+        }
+    }
+*/
+
+    private getOptions() {
+        return {
+            headers: new HttpHeaders({
+                "Authorization": `Bearer<${this.auth_token}>`
             })
         }
     }

@@ -19,7 +19,9 @@ export class ProductRepository {
      getProducts(category: string=null) : Product[] {
 return this.products.filter(p=>category==null || category==p.category);
      }
-
+getProduct(id:number) : Product{
+    return this.products.find(p=>p.id==id);
+}
      getCategories(): string[] {
          return this.categories;
      }
