@@ -29,7 +29,7 @@ Please enter your name
 <label>Address</label>
 <input class="form-control" #address="ngModel" name="address"
 [(ngModel)]="order.address" required />
-<span *ngIf="submitted && address.invalid" class="textdanger">
+<span *ngIf="submitted && address.invalid" class="text-danger">
 Please enter your address
 </span>
 </div>
